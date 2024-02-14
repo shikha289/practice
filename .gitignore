@@ -1,0 +1,6 @@
+.idea
+target
+allure-reports
+*.iml
+*.zip
+.gitignore
