@@ -2,17 +2,32 @@ package com.jtc;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import io.github.bonigarcia.wdm.managers.ChromeDriverManager;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.Test;
+
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.time.Duration;
+import java.util.Properties;
 
 public class AmazonTest {
     @Test
-    public void testAmazon(){
+    public void testAmazon() throws IOException {
+        FileReader reader=new FileReader("C:\\Users\\lenovo\\Desktop\\intellij\\maven\\practice\\properties1.properties");
+        Properties props=new Properties();
+        props.load(reader);
+      WebDriverWait wait;
         WebDriver driver;
         driver=new ChromeDriver();
-        driver.get("https://www.amazon.in/?&tag=googhydrabk1-21&ref=pd_sl_7hz2t19t5c_e&adgrpid=155259815513&hvpone=&hvptwo=&hvadid=678802104188&hvpos=&hvnetw=g&hvrand=12790269414721518963&hvqmt=e&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9303027&hvtargid=kwd-10573980&hydadcr=14453_2371562");
-
+        driver.get(props.getProperty("amazonUrl"));
+        wait=new WebDriverWait(driver, Duration.ofSeconds(10));
+       wait.until(ExpectedConditions.titleIs("Online Shopping site in India: Shop Online for Mobiles, Books, Watches, Shoes and More - Amazon.in"));
+driver.quit();
 
     }
 }

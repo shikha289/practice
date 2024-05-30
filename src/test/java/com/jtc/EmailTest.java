@@ -19,9 +19,9 @@ public class EmailTest {
         FileReader reader=new FileReader("C:\\Users\\lenovo\\Desktop\\intellij\\maven\\practice\\properties1.properties");
         Properties props=new Properties();
         props.load(reader);
-        ChromeOptions chromeOptions=new ChromeOptions();
-        chromeOptions.setExperimentalOption("debuggerAddress","localhost:9222");
-        WebDriver driver = new ChromeDriver(chromeOptions);
+        //ChromeOptions chromeOptions=new ChromeOptions();
+       // chromeOptions.setExperimentalOption("debuggerAddress","localhost:9222");
+        WebDriver driver = new ChromeDriver();
         WebDriverWait wait;
         wait=new WebDriverWait(driver, Duration.ofSeconds(10));
         driver.get("https://accounts.google.com/v3/signin/identifier?continue=https%3A%2F%2Fmail.google.com%2Fmail%2Fu%2F0%2F&emr=1&followup=https%3A%2F%2Fmail.google.com%2Fmail%2Fu%2F0%2F&ifkv=ASKXGp3f00wq5hWmAPBFotPGgQHm-vzG0KN80mVXJEZkClnOcuQbN3CluHOhJx3RGhObOPtaHkJ_wA&osid=1&passive=1209600&service=mail&flowName=GlifWebSignIn&flowEntry=ServiceLogin&dsh=S-570407541%3A1707586879910430&theme=glif");
@@ -30,7 +30,7 @@ public class EmailTest {
         driver.findElement(By.xpath("//input[@type='email']")).sendKeys(props.getProperty("username"));
         driver.findElement(By.xpath("//span[normalize-space()='Next']")).click();
         Thread.sleep(3000);
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@name='Passwd']"))).sendKeys(props.getProperty("password"));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@name='Passwd']"))).sendKeys("nvac xtqm duod xnso");
         //driver.findElement(By.xpath("//input[@name='Passwd']")).sendKeys("shikha289");
         driver.findElement(By.xpath("//span[text()='Next']")).click();
         Thread.sleep(6000);
